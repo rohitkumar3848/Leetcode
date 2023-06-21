@@ -1,0 +1,16 @@
+class Solution {
+    public int diagonalSum(int[][] mat) {
+        int psum=0;
+        int ssum=0;
+        int n=mat.length;
+        for(int i=0;i<mat.length;i++){
+                psum+=mat[i][i];
+                ssum+=mat[n-i-1][i];
+        }
+        int finalsum=psum+ssum;
+        if(n%2!=0){
+            finalsum-=mat[n/2][n/2];
+        }
+        return finalsum;
+    }
+}
