@@ -1,0 +1,78 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode getMin(TreeNode root){
+        TreeNode cur=root;
+        while(cur.left!=null){
+            cur=cur.left;
+        }
+        return cur;
+    }
+    public TreeNode deleteNode(TreeNode root, int key) {
+        TreeNode parent=null;
+        TreeNode cur=root;
+        while(cur!=null && cur.val!=key){
+            parent=cur;
+            if(key<cur.val){
+                 cur=cur.left;
+            }
+            else{
+                cur=cur.right;
+            }
+        }
+        if(cur==null){
+            return root;
+        }
+        if(cur.left==null && cur.right==null){
+            if(cur==root){
+                return null;
+            }
+            else{
+                if(parent.left==cur){
+                    parent.left=null;
+                }
+                else{
+                    parent.right=null;
+                }
+            }
+        }
+        else if(cur.left==null || cur.right==null){
+            TreeNode child;
+            if(cur.left!=null){
+                child=cur.left;
+            }
+            else{
+                child=cur.right;
+            }
+            if(cur==root){
+                return child;
+            }
+            if(parent.left==cur){
+                parent.left=child;
+            }
+            else{
+                parent.right=child;
+            }
+        }
+        else{
+            TreeNode min=getMin(cur.right);
+            int minval=min.val;
+            deleteNode(root,minval);
+            cur.val=minval;
+        }
+        return root;
+    }
+}
