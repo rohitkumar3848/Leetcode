@@ -1,0 +1,12 @@
+class Solution {
+    public String reverseWords(String s) {
+        //Remove extra space from string
+        s=s.trim();
+        //List which contains words and split when white space occur
+        List<String> s1=Arrays.asList(s.split("\\s+"));
+        //Reverse list
+        Collections.reverse(s1);
+        // return res in form String every word of string is take whitespace
+        return String.join(" ",s1);
+    }
+}
