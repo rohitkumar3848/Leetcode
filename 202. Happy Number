@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isHappy(int n) {
+       HashSet<Integer> h1=new HashSet<>();
+       while(n!=1){
+           if(h1.contains(n)){
+               return false;
+           }
+           h1.add(n);
+           n=squareOfDigits(n);
+       }
+       return true;
+    }
+    public int squareOfDigits(int n){
+        int d=0;
+        int sum=0;
+        while(n!=0){
+            d=n%10;
+            sum+=d*d;
+            n/=10;
+        }
+        return sum;
+    }
+}
