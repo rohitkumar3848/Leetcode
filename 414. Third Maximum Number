@@ -1,0 +1,22 @@
+class Solution {
+    public int thirdMax(int[] nums) {
+       HashSet<Integer> h1=new HashSet<>();
+       for(int i=0;i<nums.length;i++){
+           h1.add(nums[i]);
+       }
+       if(h1.size()<3){
+           return Collections.max(h1);
+       }
+       PriorityQueue<Integer> pq=new PriorityQueue<>();
+        for(int ele:h1){
+            pq.add(ele);
+            if(pq.size()>3){
+                pq.remove();
+            }
+        }
+        if(pq.size()<3){
+            return pq.remove();
+        }
+        return pq.peek();
+    }
+}
