@@ -1,0 +1,22 @@
+class Solution {
+    public int alternateDigitSum(int n) {
+        int k=1;
+        int sum1=0;
+        int sum2=0;
+        while(n!=0){
+            int d=n%10;
+            if(k%2==0){
+                sum1+=d;
+            }
+            else{
+                sum2+=d;
+            }
+            k++;
+            n/=10;
+        }
+        if(k%2!=0){
+            return sum1-sum2;
+        }
+        return sum2-sum1;
+    }
+}
