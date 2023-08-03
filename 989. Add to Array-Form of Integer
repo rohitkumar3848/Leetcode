@@ -1,0 +1,23 @@
+lass Solution {
+    public List<Integer> addToArrayForm(int[] nums, int k) {
+        ArrayList<Integer> a1=new ArrayList<>();
+        ArrayList<Integer> a2=new ArrayList<>();
+        int c=0;
+        for(int i=nums.length-1;i>=0;i--){
+            c+=nums[i]+(k%10);
+            k/=10;
+            a1.add(c%10);
+            c/=10;
+        }
+        while(k>0 || c!=0){
+            c+=(k%10);
+            a1.add(c%10);
+            c/=10;
+            k/=10;
+        }
+        for(int i=a1.size()-1;i>=0;i--){
+            a2.add(a1.get(i));
+        }
+        return a2;
+    }
+}
