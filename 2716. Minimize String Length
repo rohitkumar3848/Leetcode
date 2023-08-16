@@ -1,0 +1,15 @@
+class Solution {
+    public int minimizedStringLength(String s) {
+        char rev[] = s.toCharArray();
+        Arrays.sort(rev);
+        String s1=new String(rev);
+        int count=1;
+        for(int i=1;i<s1.length();i++){
+            if(s1.charAt(i)==s1.charAt(i-1)){
+                continue;
+            }
+            count++;
+        }
+        return count;
+    }
+}
